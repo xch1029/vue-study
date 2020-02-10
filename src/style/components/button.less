@@ -1,0 +1,82 @@
+@btn-prefix: ~"@{prefix}btn";
+
+.btn-color(@color, @percent: 10%) {
+    background-color: @color;
+    border-color: darken(@color, @percent);
+    color: @white-color;
+    &:hover{
+        border-color: lighten(@color, @percent);
+        background-color: lighten(@color, @percent);
+    }
+    &:active {
+        border-color: darken(@color, @percent);
+        background-color: darken(@color, @percent);
+    }
+}
+
+.@{btn-prefix} {
+    border: none;
+    outline: none;
+    padding: @button-size-normal-padding;
+    display: inline-block;
+    border-radius: @border-radius;
+    font-size: @font-size;
+    line-height: 1;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all  @transition-time;
+    border: 1px solid @gray-color;
+    box-shadow: @box-shadow-button;
+    background-color: #fff;
+    &.@{btn-prefix} {
+        &-primary{
+            .btn-color(@primary-color)
+        }
+        &-red {
+            .btn-color(@red-color);
+        }
+        &-gray {
+            .btn-color(@gray-color);
+        }
+        &-yellow {
+            .btn-color(@yellow-color);
+        }
+        &-green {
+            .btn-color(@green-color, 5%);
+        }
+        &-blue {
+            .btn-color(@blue-color);
+        }
+        
+        &-no-border{
+            box-shadow: none;
+            border-color: transparent !important;
+        }
+        &-circle {
+            border-radius: 20px;
+        }
+    }
+    &[disabled] {
+        cursor: @disabled-cursor;
+        background-color: @disabled-background-color;
+        border-color: @disabled-border-color;
+        color: @disabled-color;
+        &:hover {
+            background-color: @disabled-background-color;
+            border-color: @disabled-border-color;
+            color: @disabled-color;
+        }
+    }
+    &.@{btn-prefix}-l {
+        padding: @button-size-l-padding;
+    }
+    &.@{btn-prefix}-m {
+        padding: @button-size-m-padding;
+    }
+    &.@{btn-prefix}-s {
+        padding: @button-size-s-padding;
+    }
+    &.@{btn-prefix}-xs {
+        padding: @button-size-xs-padding;
+    }
+}
